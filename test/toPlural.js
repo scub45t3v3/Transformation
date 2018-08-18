@@ -1,23 +1,32 @@
-(function() {
-  /*
-   * this is a direct passthrough to pluralize all tests should be preformed on
-   * pluralize this is only included to test the passthrough is setup as expected
-   */
-  var toPlural, unit;
+'use strict';
 
-  unit = require('unit.js');
+/*
+ * this is a direct passthrough to pluralize all tests should be preformed on
+ * pluralize this is only included to test the passthrough is setup as
+ * expected
+ */
+(() => {
+  // include dependencies
+  const unit = require('unit.js');
+  const toPlural = require('../toPlural');
 
-  toPlural = require('../toPlural');
+  // describe #toPlural
+  describe('#toPlural', () => {
+    it('should be a function', () => {
+      unit
+        .function(toPlural);
+    }); // end it
 
-  describe('#toPlural', function() {
-    it('should be a function', function() {
-      unit.function(toPlural);
-      return null;
-    });
-    return it('should return a plural version of a word', function() {
-      unit.string(toPlural('table')).is('tables').string(toPlural('chair')).is('chairs').string(toPlural('car')).is('cars').string(toPlural('key')).is('keys');
-      return null;
-    });
-  });
-
-}).call(this);
+    it('should return a plural version of a word', () => {
+      unit
+        .string(toPlural('table'))
+        .is('tables')
+        .string(toPlural('chair'))
+        .is('chairs')
+        .string(toPlural('car'))
+        .is('cars')
+        .string(toPlural('key'))
+        .is('keys');
+    }); // end it
+  }); // end describe #toPlural
+})(); // end IIFE
