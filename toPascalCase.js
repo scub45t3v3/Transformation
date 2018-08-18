@@ -1,14 +1,23 @@
-(function() {
-  var toPascalCase;
+'use strict';
 
-  toPascalCase = function(value) {
-    return value != null ? typeof value.toString === "function" ? value.toString().trim().replace(/(?:\W|_)+/gm, '_').replace(/^_+/, '').replace(/_+$/, '').replace(/_(.)/gm, function(match, char) {
-      return (char != null ? typeof char.toUpperCase === "function" ? char.toUpperCase() : void 0 : void 0) || char;
-    }).replace(/^[a-z]/, function(match) {
-      return (match != null ? typeof match.toUpperCase === "function" ? match.toUpperCase() : void 0 : void 0) || match;
-    }) : void 0 : void 0;
-  };
+(() => {
+  // include dependencies
+  const toString = require('./toString');
 
+  const toPascalCase = (value) => {
+    return toString(value)
+      .trim()
+      .replace(/(?:\W|_)+/gm, '_')
+      .replace(/^_+/, '')
+      .replace(/_+$/, '')
+      .replace(/_(.)/gm, (match, char) => {
+        return char && char.toUpperCase();
+      })
+      .replace(/^[a-z]/, (match) => {
+        return match && match.toUpperCase();
+      });
+  }; // end toPascalCase
+
+  // export toPascalCase as commonjs module
   module.exports = toPascalCase;
-
-}).call(this);
+})(); // end IIFE
