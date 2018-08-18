@@ -1,12 +1,13 @@
-(function() {
-  var toTokens, toWords;
+'use strict';
 
-  toTokens = require('./toTokens');
+(() => {
+  // include dependencies
+  const toTokens = require('./toTokens');
 
-  toWords = function(value) {
+  const toWords = (value) => {
     return toTokens(value, /[!?.]?[\s,]+/);
-  };
+  }; // end toWords
 
+  // export toWords as commonjs module
   module.exports = toWords;
-
-}).call(this);
+})(); // end IIFE
