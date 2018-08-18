@@ -1,26 +1,28 @@
-(function() {
-  var _, toList;
+'use strict';
 
-  _ = require('underscore');
+(() => {
+  // include dependencies
+  const _ = require('underscore');
 
-  toList = function(value, opt = {}) {
-    var last;
+  const toList = (value, opt = {}) => {
     _.defaults(opt, {
       delimiter: ', ',
-      last: ' and '
+      last: ' and ',
     });
-    value = _.filter(_.flatten([value]), function(v) {
-      return (v != null) && v !== '';
+
+    value = _.filter(_.flatten([value]), (v) => {
+      return !(v == null || v === '' || Number.isNaN(v));
     });
-    last = value != null ? typeof value.pop === "function" ? value.pop() : void 0 : void 0;
-    if (!Array.isArray(value) || !(value != null ? value.length : void 0)) {
+
+    const last = value.pop();
+
+    if (!Array.isArray(value) || !value.length) {
       return `${last}` || '';
     }
-    last = `${opt.last}${last}`;
-    value = value != null ? value.join(opt.delimiter) : void 0;
-    return `${value}${last}`;
-  };
 
+    return `${value.join(opt.delimiter)}${opt.last}${last}`;
+  }; // end toList
+
+  // export toList as commonjs module
   module.exports = toList;
-
-}).call(this);
+})(); // end IIFE
