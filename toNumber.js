@@ -1,10 +1,10 @@
-(function() {
-  var toNumber;
+'use strict';
 
-  toNumber = function(value) {
+(() => {
+  const toNumber = (value) => {
     return Number(value);
-  };
+  }; // end toNumber
 
+  // export toNumber as commonjs module
   module.exports = toNumber;
-
-}).call(this);
+})(); // end IIFE
