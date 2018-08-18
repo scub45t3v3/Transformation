@@ -1,14 +1,23 @@
-(function() {
-  var toCamelCase;
+'use strict';
 
-  toCamelCase = function(value) {
-    return value != null ? typeof value.toString === "function" ? value.toString().trim().replace(/(?:\W|_)+/gm, '_').replace(/^_+/, '').replace(/_+$/, '').replace(/_(.)/gm, function(match, char) {
-      return (char != null ? typeof char.toUpperCase === "function" ? char.toUpperCase() : void 0 : void 0) || char;
-    }).replace(/^[A-Z]/, function(match) {
-      return (match != null ? typeof match.toLowerCase === "function" ? match.toLowerCase() : void 0 : void 0) || match;
-    }) : void 0 : void 0;
-  };
+(() => {
+  // include dependencies
+  const toString = require('./toString');
 
+  const toCamelCase = (value) => {
+    return toString(value)
+      .trim()
+      .replace(/(?:\W|_)+/gm, '_')
+      .replace(/^_+/, '')
+      .replace(/_+$/, '')
+      .replace(/_(.)/gm, (match, char) => {
+        return char && char.toUpperCase();
+      })
+      .replace(/^[A-Z]/, (match) => {
+        return match && match.toLowerCase();
+      });
+  }; // end toCamelCase
+
+  // export toCamelCase as commonjs module
   module.exports = toCamelCase;
-
-}).call(this);
+})(); // end IIFE
