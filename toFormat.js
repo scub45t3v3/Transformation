@@ -1,12 +1,13 @@
-(function() {
-  var format, toFormat;
+'use strict';
 
-  ({format} = require('util'));
+(() => {
+  // include dependencies
+  const {format} = require('util');
 
-  toFormat = function(...args) {
+  const toFormat = (...args) => {
     return format(...args);
   };
 
+  // export toFormat as commonjs module
   module.exports = toFormat;
-
-}).call(this);
+})(); // end IIFE
