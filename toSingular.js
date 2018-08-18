@@ -1,12 +1,13 @@
-(function() {
-  var singular, toSingular;
+'use strict';
 
-  ({singular} = require('pluralize'));
+(() => {
+  // include dependencies
+  const {singular} = require('pluralize');
 
-  toSingular = function(value) {
+  const toSingular = (value) => {
     return singular(value);
-  };
+  }; // end toSingular
 
+  // export toSingular as commonjs module
   module.exports = toSingular;
-
-}).call(this);
+})(); // end IIFE
