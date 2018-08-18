@@ -1,12 +1,13 @@
-(function() {
-  var parse, toCSV;
+'use strict';
 
-  ({parse} = require('json2csv'));
+(() => {
+  // include dependencies
+  const {parse} = require('json2csv');
 
-  toCSV = function(value, opt = {}) {
+  const toCSV = (value, opt = {}) => {
     return parse(value, opt);
   };
 
+  // export toCSV as commonjs module
   module.exports = toCSV;
-
-}).call(this);
+})(); // end IIFE
