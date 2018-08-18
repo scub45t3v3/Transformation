@@ -1,23 +1,33 @@
-(function() {
-  var toSlug, unit;
+'use strict';
 
-  unit = require('unit.js');
+(() => {
+  // include dependencies
+  const unit = require('unit.js');
+  const toSlug = require('../toSlug');
 
-  toSlug = require('../toSlug');
+  // describe #toSlug
+  describe('#toSlug', () => {
+    it('should be a function', () => {
+      unit
+        .function(toSlug);
+    }); // end it
 
-  describe('#toSlug', function() {
-    it('should be a function', function() {
-      unit.function(toSlug);
-      return null;
-    });
-    it('should return a slug when given a string', function() {
-      unit.string(toSlug('hello world')).is('hello-world').string(toSlug('helloWorld')).is('hello-World').string(toSlug('＄ vs €')).is('dollar-vs-euro');
-      return null;
-    });
-    return it('should return a slug when given an array', function() {
-      unit.string(toSlug(['hello', 'world'])).is('hello-world').string(toSlug(['＄', 'vs', '€'])).is('dollar-vs-euro');
-      return null;
-    });
-  });
+    it('should return a slug when given a string', () => {
+      unit
+        .string(toSlug('hello world'))
+        .is('hello-world')
+        .string(toSlug('helloWorld'))
+        .is('hello-World')
+        .string(toSlug('＄ vs €'))
+        .is('dollar-vs-euro');
+    }); // end it
 
-}).call(this);
+    it('should return a slug when given an array', () => {
+      unit
+        .string(toSlug(['hello', 'world']))
+        .is('hello-world')
+        .string(toSlug(['＄', 'vs', '€']))
+        .is('dollar-vs-euro');
+    }); // end it
+  }); // end describe #toSlug
+})(); // end IIFE
