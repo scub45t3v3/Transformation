@@ -1,10 +1,17 @@
-(function() {
-  var toKebabCase;
+'use strict';
 
-  toKebabCase = function(value) {
-    return value != null ? typeof value.toString === "function" ? value.toString().trim().replace(/(?:\W|_)+/gm, '-').replace(/([a-z])([A-Z])/gm, '$1-$2').toLowerCase() : void 0 : void 0;
+(() => {
+  // include dependencies
+  const toString = require('./toString');
+
+  const toKebabCase = (value) => {
+    return toString(value)
+      .trim()
+      .replace(/(?:\W|_)+/gm, '-')
+      .replace(/([a-z])([A-Z])/gm, '$1-$2')
+      .toLowerCase();
   };
 
+  // export toKebabCase as commonjs module
   module.exports = toKebabCase;
-
-}).call(this);
+})(); // end IIFE
