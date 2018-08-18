@@ -1,12 +1,13 @@
-(function() {
-  var plural, toPlural;
+'use strict';
 
-  ({plural} = require('pluralize'));
+(() => {
+  // include dependencies
+  const {plural} = require('pluralize');
 
-  toPlural = function(value) {
+  const toPlural = (value) => {
     return plural(value);
-  };
+  }; // end toPlural
 
+  // export toPlural as commonjs module
   module.exports = toPlural;
-
-}).call(this);
+})(); // end IIFE
