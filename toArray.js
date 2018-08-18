@@ -1,26 +1,30 @@
-(function() {
-  var _, toArray, toWords;
+'use strict';
 
-  _ = require('underscore');
+(() => {
+  // include dependencies
+  const _ = require('underscore');
+  const toWords = require('./toWords');
 
-  toWords = require('./toWords');
-
-  toArray = function(value = [], opt = {}) {
+  const toArray = (value = [], opt = {}) => {
     if (value instanceof String || typeof value === 'string') {
       value = toWords(value);
     }
+
     if (!Array.isArray(value)) {
-      value = (typeof Array !== "undefined" && Array !== null ? typeof Array.from === "function" ? Array.from(value) : void 0 : void 0) || _.values(value);
+      value = Array.from(value) || _.values(value);
     }
-    if (!!(opt != null ? opt.flatten : void 0)) {
+
+    if (opt.flatten) {
       value = _.flatten(value);
     }
-    if (typeof (opt != null ? opt.filter : void 0) === 'function') {
+
+    if (typeof opt.filter === 'function') {
       value = _.filter(value, opt.filter);
     }
+
     return value;
-  };
+  }; // end toArray
 
+  // export toArray as commonjs module
   module.exports = toArray;
-
-}).call(this);
+})(); // end IIFE
