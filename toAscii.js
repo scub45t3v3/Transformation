@@ -1,31 +1,30 @@
-(function() {
-  var _, charMap, currencies, diacritics, symbols, toAscii, toString;
+'use strict';
 
-  _ = require('underscore');
+(() => {
+  // include dependencies
+  const currencies = require('./util/currencies');
+  const diacritics = require('./util/diacritics');
+  const symbols = require('./util/symbols');
+  const toString = require('./toString');
+  const charMap = Object.assign({}, currencies, diacritics, symbols);
 
-  currencies = require('./util/currencies');
-
-  diacritics = require('./util/diacritics');
-
-  symbols = require('./util/symbols');
-
-  toString = require('./toString');
-
-  charMap = _.extend({}, currencies, diacritics, symbols);
-
-  toAscii = function(value) {
-    var ref;
+  const toAscii = (value) => {
     if (Array.isArray(value)) {
       value = value.join(' ');
     }
-    return (ref = toString(value)) != null ? ref.split('').map(function(char) {
-      if (char.codePointAt(0) > 128) {
-        char = charMap[char] || '';
-      }
-      return char;
-    }).join('') : void 0;
-  };
 
+    return toString(value)
+      .split('')
+      .map((char) => {
+        if (char.codePointAt(0) > 128) {
+          char = charMap[char] || '';
+        }
+
+        return char;
+      })
+      .join('');
+  }; // end toAscii
+
+  // export toAscii as commonjs module
   module.exports = toAscii;
-
-}).call(this);
+})(); // end IIFE
