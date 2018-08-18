@@ -1,22 +1,24 @@
-(function() {
-  var REGEX, toRegExp, toString;
+'use strict';
 
-  toString = require('./toString');
+(() => {
+  // include dependencies
+  const toString = require('./toString');
+  const REGEX = /^([`~!@#$%^&*+=|\\?/])(.+)\1([gimuy]*)$/;
 
-  REGEX = /^([`~!@#$%^&*+=|\\?\/])(.+)\1([gimuy]*)$/;
-
-  toRegExp = function(value) {
-    var match;
+  const toRegExp = (value) => {
     if (value instanceof RegExp) {
       return value;
     }
-    match = toString(value).match(REGEX);
-    if (!(match != null ? match[2] : void 0)) {
+
+    const match = toString(value).match(REGEX);
+
+    if (!(match && match[2])) {
       throw new TypeError(`${value} can not be transformed to a RegExp`);
     }
+
     return new RegExp(match[2], match[3]);
   };
 
+  // export toRegExp as commonjs module
   module.exports = toRegExp;
-
-}).call(this);
+})(); // end IIFE
