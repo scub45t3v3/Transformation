@@ -1,33 +1,47 @@
-(function() {
-  var toRegExp, unit;
+'use strict';
 
-  unit = require('unit.js');
+(() => {
+  // include dependencies
+  const unit = require('unit.js');
+  const toRegExp = require('../toRegExp');
 
-  toRegExp = require('../toRegExp');
-
-  describe('#toRegExp', function() {
-    it('should be a function', function() {
+  // describe #toRegExp
+  describe('#toRegExp', () => {
+    it('should be a function', () => {
       unit.function(toRegExp);
-      return null;
-    });
-    it('should return a RegExp when given a RegExp object', function() {
-      unit.regexp(toRegExp(/asd/i)).is(/asd/i).regexp(toRegExp(new RegExp('^hello', 'i'))).is(/^hello/i).regexp(toRegExp(/^\d+$/)).is(/^\d+$/);
-      return null;
-    });
-    it('should return a RegExp object when given a serialized pcre string', function() {
-      unit.regexp(toRegExp('/asd/i')).is(/asd/i).regexp(toRegExp('%^hello%i')).is(/^hello/i).regexp(toRegExp('|\\d+|g')).is(/\d+/g);
-      return null;
-    });
-    return it('should throw an error when given a non-serilized pcre string', function() {
-      unit.error(function() {
-        return toRegExp('hello');
-      }).error(function() {
-        return toRegExp('/asd|i');
-      }).error(function() {
-        return toRegExp('/asd/t');
-      });
-      return null;
-    });
-  });
+    }); // end it
 
-}).call(this);
+    it('should return a RegExp when given a RegExp object', () => {
+      unit
+        .regexp(toRegExp(/asd/i))
+        .is(/asd/i)
+        .regexp(toRegExp(new RegExp('^hello', 'i')))
+        .is(/^hello/i)
+        .regexp(toRegExp(/^\d+$/))
+        .is(/^\d+$/);
+    }); // end it
+
+    it('should return a RegExp object when given a serialized pcre string', () => {
+      unit
+        .regexp(toRegExp('/asd/i'))
+        .is(/asd/i)
+        .regexp(toRegExp('%^hello%i'))
+        .is(/^hello/i)
+        .regexp(toRegExp('|\\d+|g'))
+        .is(/\d+/g);
+    }); // end it
+
+    it('should throw an error when given a non-serilized pcre string', () => {
+      unit
+        .error(() => {
+          toRegExp('hello');
+        })
+        .error(() => {
+          toRegExp('/asd|i');
+        })
+        .error(() => {
+          toRegExp('/asd/t');
+        });
+    }); // end it
+  }); // end describe #toRegExp
+})(); // end IIFE
