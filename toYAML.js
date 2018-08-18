@@ -1,12 +1,13 @@
-(function() {
-  var toYAML, yaml;
+'use strict';
 
-  yaml = require('js-yaml');
+(() => {
+  // include dependencies
+  const yaml = require('js-yaml');
 
-  toYAML = function(value, opt = {}) {
+  const toYAML = (value, opt = {}) => {
     return yaml.safeDump(value, opt);
-  };
+  }; // end toYAML
 
+  // export toYAML as commonjs module
   module.exports = toYAML;
-
-}).call(this);
+})(); // end IIFE
