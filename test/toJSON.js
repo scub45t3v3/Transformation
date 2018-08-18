@@ -1,31 +1,33 @@
-(function() {
-  /*
-   * this is a direct passthrough to JSON.stringify all tests should be preformed
-   * on JSON.stringify this is only included to test the passthrough is setup as
-   * expected
-   */
-  var toJSON, unit;
+'use strict';
 
-  unit = require('unit.js');
+/*
+ * this is a direct passthrough to JSON.stringify all tests should be
+ * preformed on JSON.stringify this is only included to test the passthrough
+ * is setup as expected
+ */
+(() => {
+  // include dependencies
+  const unit = require('unit.js');
+  const toJSON = require('../toJSON');
 
-  toJSON = require('../toJSON');
+  describe('#toJSON', () => {
+    it('should be a function', () => {
+      unit
+        .function(toJSON);
+    }); // end it
 
-  describe('#toJSON', function() {
-    it('should be a function', function() {
-      unit.function(toJSON);
-      return null;
-    });
-    return it('should return a json string for an object', function() {
-      var regex, test;
-      test = {
+    it('should return a json string for an object', () => {
+      const test = {
         firstName: 'James',
         lastName: 'Bond',
-        age: 55
+        age: 55,
       };
-      regex = /^\s*{\s*"firstName"\s*:\s*"James"\s*,\s*"lastName"\s*:\s*"Bond"\s*,\s*"age"\s*:\s*55\s*}\s*$/m;
-      unit.string(toJSON(test)).match(regex);
-      return null;
-    });
-  });
 
-}).call(this);
+      const regex = /^\s*{\s*"firstName"\s*:\s*"James"\s*,\s*"lastName"\s*:\s*"Bond"\s*,\s*"age"\s*:\s*55\s*}\s*$/m;
+
+      unit
+        .string(toJSON(test))
+        .match(regex);
+    }); // end it
+  }); // end describe #toJSON
+})(); // end IIFE
