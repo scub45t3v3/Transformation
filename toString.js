@@ -1,13 +1,14 @@
-(function() {
-  var toString;
+'use strict';
 
-  toString = function(value) {
+(() => {
+  const toString = (value) => {
     if (value == null) {
       value = '';
     }
-    return (value != null ? typeof value.toString === "function" ? value.toString() : void 0 : void 0) || `${value}`;
-  };
 
+    return value.toString() || `${value}`;
+  }; // end toString
+
+  // expor toString as commonjs module
   module.exports = toString;
-
-}).call(this);
+})(); // end IIFE
