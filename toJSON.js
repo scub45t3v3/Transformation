@@ -1,10 +1,10 @@
-(function() {
-  var toJSON;
+'use strict';
 
-  toJSON = function(value, space = 2) {
+(() => {
+  const toJSON = (value, space = 2) => {
     return JSON.stringify(value, null, space);
   };
 
+  // export toJSON as commonjs module
   module.exports = toJSON;
-
-}).call(this);
+})(); // end IIFE
