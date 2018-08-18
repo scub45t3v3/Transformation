@@ -1,15 +1,20 @@
-(function() {
-  var toList, toListSerial;
+'use strict';
 
-  toList = require('./toList');
+(() => {
+  // include dependencies
+  const toList = require('./toList');
 
-  toListSerial = function(value, opt = {}) {
-    opt.delimiter || (opt.delimiter = ', ');
-    opt.last || (opt.last = ' and ');
+  const toListSerial = (value, opt = {}) => {
+    opt = Object.assign({
+      delimiter: ', ',
+      last: ' and ',
+    }, opt);
+
     opt.last = `${opt.delimiter}${opt.last}`.replace(/\s+/, ' ');
+
     return toList(value, opt);
-  };
+  }; // end toListSerial
 
+  // export toListSerial as commonjs module
   module.exports = toListSerial;
-
-}).call(this);
+})(); // end IIFE
