@@ -1,15 +1,15 @@
-(function() {
-  var toTokens, unit;
+'use strict';
 
-  unit = require('unit.js');
+(() => {
+  // include dependencies
+  const unit = require('unit.js');
+  const toTokens = require('../toTokens');
 
-  toTokens = require('../toTokens');
-
-  describe('#toTokens', function() {
-    return it('should be a function', function() {
-      unit.function(toTokens);
-      return null;
-    });
-  });
-
-}).call(this);
+  // describe #toTokens
+  describe('#toTokens', () => {
+    it('should be a function', () => {
+      unit
+        .function(toTokens);
+    }); // end it
+  }); // end describe #toTokens
+})(); // end IIFE
