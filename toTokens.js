@@ -1,11 +1,13 @@
-(function() {
-  var toTokens;
+'use strict';
 
-  toTokens = function(value, delimiter = /\s+/) {
-    var ref;
-    return (value != null ? typeof value.toString === "function" ? (ref = value.toString()) != null ? typeof ref.split === "function" ? ref.split(delimiter) : void 0 : void 0 : void 0 : void 0) || [];
-  };
+(() => {
+  // include dependencies
+  const toString = require('./toString');
 
+  const toTokens = (value, delimiter = /\s+/) => {
+    return toString(value).split(delimiter) || [];
+  }; // end toTokens
+
+  // expor toTokens as commonjs module
   module.exports = toTokens;
-
-}).call(this);
+})(); // end IIFE
