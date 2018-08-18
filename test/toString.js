@@ -1,15 +1,15 @@
-(function() {
-  var toString, unit;
+'use strict';
 
-  unit = require('unit.js');
+(() => {
+  // include dependencies
+  const unit = require('unit.js');
+  const toString = require('../toString');
 
-  toString = require('../toString');
-
-  describe('#toString', function() {
-    return it('should be a function', function() {
-      unit.function(toString);
-      return null;
-    });
-  });
-
-}).call(this);
+  // describe #toString
+  describe('#toString', () => {
+    it('should be a function', () => {
+      unit
+        .function(toString);
+    }); // end it
+  }); // end describe #toString
+})(); // end IIFE
