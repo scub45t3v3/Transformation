@@ -1,28 +1,32 @@
-(function() {
-  var _, charMap, currencies, diacritics, symbols, toSlug, toString;
+'use strict';
 
-  _ = require('underscore');
+(() => {
+  // include dependencies
+  const _ = require('underscore');
+  const currencies = require('./util/currencies');
+  const diacritics = require('./util/diacritics');
+  const symbols = require('./util/symbols');
+  const toString = require('./toString');
+  const charMap = _.extend({}, currencies, diacritics, symbols);
 
-  currencies = require('./util/currencies');
-
-  diacritics = require('./util/diacritics');
-
-  symbols = require('./util/symbols');
-
-  toString = require('./toString');
-
-  charMap = _.extend({}, currencies, diacritics, symbols);
-
-  toSlug = function(value) {
-    var ref;
+  const toSlug = (value) => {
     if (Array.isArray(value)) {
       value = value.join(' ');
     }
-    return (ref = toString(value)) != null ? ref.split('').map(function(char) {
-      return charMap[char] || char;
-    }).join('').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '').replace(/([a-z])([A-Z])/gm, '$1-$2').replace(/[^\w.\-~!$&'()*+,;=':@%]+/, '') : void 0;
+
+    return toString(value)
+      .split('')
+      .map((char) => {
+        return charMap[char] || char;
+      })
+      .join('')
+      .trim()
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .replace(/([a-z])([A-Z])/gm, '$1-$2')
+      .replace(/[^\w.\-~!$&'()*+,;=':@%]+/, '');
   };
 
+  // export toSlug as commonjs module
   module.exports = toSlug;
-
-}).call(this);
+})(); // end IIFE
