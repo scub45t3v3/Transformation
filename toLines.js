@@ -1,12 +1,13 @@
-(function() {
-  var toLines, toTokens;
+'use strict';
 
-  toTokens = require('./toTokens');
+(() => {
+  // include dependencies
+  const toTokens = require('./toTokens');
 
-  toLines = function(value) {
+  const toLines = (value) => {
     return toTokens(value, /\r\n?|\n/gm);
   };
 
+  // export toLines as commonjs module
   module.exports = toLines;
-
-}).call(this);
+})(); // end IIFE
