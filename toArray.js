@@ -2,24 +2,22 @@
 
 (() => {
   // include dependencies
-  const _ = require('underscore');
+  const {flatten, pairs} = require('underscore');
   const toWords = require('./toWords');
 
-  const toArray = (value = [], opt = {}) => {
+  const toArray = (value, opt = {}) => {
     if (value instanceof String || typeof value === 'string') {
       value = toWords(value);
     }
 
-    if (!Array.isArray(value)) {
-      value = Array.from(value) || _.values(value);
+    try {
+      value = (Array.from(value).length && Array.from(value)) || pairs(value);
+    } catch (err) {
+      value = pairs(value);
     }
 
     if (opt.flatten) {
-      value = _.flatten(value);
-    }
-
-    if (typeof opt.filter === 'function') {
-      value = _.filter(value, opt.filter);
+      value = flatten(value);
     }
 
     return value;

@@ -1,5 +1,6 @@
 # TOC
    - [@scuba-squad/transformation](#scuba-squadtransformation)
+   - [#toArray](#toarray)
    - [#toAscii](#toascii)
    - [#toBoolean](#toboolean)
    - [#toCSV](#tocsv)
@@ -36,6 +37,162 @@ unit
   .matchEach((value, key) => {
     return typeof value === 'function' && /^to[A-Z]/.test(key);
   });
+```
+
+<a name="toarray"></a>
+# #toArray
+should be a function.
+
+```js
+unit
+  .function(toArray);
+```
+
+should return an empty array for undefined and null.
+
+```js
+unit
+  .array(toArray())
+  .is([])
+  .array(toArray(null))
+  .is([]);
+```
+
+should return an array for an array.
+
+```js
+unit
+  .array(toArray([1, 2, 3]))
+  .is([1, 2, 3])
+  .array(toArray(['a', 'b', 'c']))
+  .is(['a', 'b', 'c'])
+  .array(toArray([
+    [1, 2, 3],
+    ['a', 'b', 'c'],
+  ]))
+  .is([
+    [1, 2, 3],
+    ['a', 'b', 'c'],
+  ])
+  .array(toArray([
+    {z: true},
+    {x: 'no'},
+    {y: 0},
+  ]))
+  .is([
+    {z: true},
+    {x: 'no'},
+    {y: 0},
+  ]);
+```
+
+should return an array for a Set.
+
+```js
+unit
+  .array(toArray(new Set([1, 2, 3])))
+  .is([1, 2, 3])
+  .array(toArray(new Set(['a', 'b', 'c'])))
+  .is(['a', 'b', 'c'])
+  .array(toArray(new Set([
+    [1, 2, 3],
+    ['a', 'b', 'c'],
+  ])))
+  .is([
+    [1, 2, 3],
+    ['a', 'b', 'c'],
+  ])
+  .array(toArray(new Set([
+    {z: true},
+    {x: 'no'},
+    {y: 0},
+  ])))
+  .is([
+    {z: true},
+    {x: 'no'},
+    {y: 0},
+  ]);
+```
+
+should return an array for a Map.
+
+```js
+unit
+  .array(toArray(new Map([
+    ['a', 1],
+    ['b', 2],
+    ['c', 3],
+  ])))
+  .is([
+    ['a', 1],
+    ['b', 2],
+    ['c', 3],
+  ]);
+```
+
+should return an array for an object.
+
+```js
+unit
+  .array(toArray({
+    a: 1,
+    b: true,
+    c: 'hi',
+    d: {
+      g: false,
+    },
+  }))
+  .is([
+    ['a', 1],
+    ['b', true],
+    ['c', 'hi'],
+    ['d', {g: false}],
+  ]);
+```
+
+should return an array for a string.
+
+```js
+unit
+  .array(toArray('hello world'))
+  .is(['hello', 'world'])
+  .array(toArray('bye'))
+  .is(['bye']);
+```
+
+should return a single-dimensional array for multi-dimensional when given the flatten opt.
+
+```js
+const test = {
+  flatten: true,
+};
+unit
+  .array(toArray([
+    [1],
+    [],
+    [
+      true,
+      [{}],
+    ],
+  ], test))
+  .is([
+    1,
+    true,
+    {},
+  ])
+  .array(toArray(new Map([
+    ['a', 1],
+    ['b', 2],
+    ['c', 3],
+  ]), test))
+  .is([
+    'a',
+    1,
+    'b',
+    2,
+    'c',
+    3,
+  ]);
 ```
 
 <a name="toascii"></a>
