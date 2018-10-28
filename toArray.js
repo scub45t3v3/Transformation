@@ -2,10 +2,13 @@
 
 (() => {
   // include dependencies
+  const debug = require('debug')('@scuba-squad:transformation:toArray');
   const {flatten, pairs} = require('underscore');
   const toWords = require('./toWords');
 
   const toArray = (value, opt = {}) => {
+    debug('call:toArray(%o, %o)', value, opt);
+
     if (value instanceof String || typeof value === 'string') {
       value = toWords(value);
     }
