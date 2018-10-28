@@ -10,6 +10,7 @@
 
   // String format
   exports.toAscii = require('./toAscii');
+  exports.toBase64 = require('./toBase64');
   exports.toCamelCase = require('./toCamelCase');
   exports.toFormat = require('./toFormat');
   exports.toKebabCase = require('./toKebabCase');

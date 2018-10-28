@@ -2,6 +2,7 @@
    - [@scuba-squad/transformation](#scuba-squadtransformation)
    - [#toArray](#toarray)
    - [#toAscii](#toascii)
+   - [#toBase64](#tobase64)
    - [#toBoolean](#toboolean)
    - [#toCSV](#tocsv)
    - [#toCamelCase](#tocamelcase)
@@ -228,6 +229,57 @@ unit
   .is('hello world')
   .string(toAscii(['＄', 'vs', '€']))
   .is('dollar vs euro');
+```
+
+<a name="tobase64"></a>
+# #toBase64
+should be a function.
+
+```js
+unit
+  .function(toBase64);
+```
+
+should return a base64 encoded string for strings.
+
+```js
+unit
+  .string(toBase64('helloWorld'))
+  .is('aGVsbG9Xb3JsZA==')
+  .string(toBase64('person'))
+  .is('cGVyc29u')
+  .string(toBase64('scubaSquad'))
+  .is('c2N1YmFTcXVhZA==')
+  .string(toBase64('json2Xml'))
+  .is('anNvbjJYbWw=')
+  .string(toBase64('json2XML'))
+  .is('anNvbjJYTUw=');
+```
+
+should return a base64 encoded string for arrays.
+
+```js
+unit
+  .string(toBase64([]))
+  .is('W10=')
+  .string(toBase64([1, 2, 3]))
+  .is('WzEsMiwzXQ==')
+  .string(toBase64(['a', 'b', 'c']))
+  .is('WyJhIiwiYiIsImMiXQ==')
+  .string(toBase64([null, false, {}, [4]]))
+  .is('W251bGwsZmFsc2Use30sWzRdXQ==');
+```
+
+should return a base64 encoded string for objects.
+
+```js
+unit
+  .string(toBase64({}))
+  .is('e30=')
+  .string(toBase64({a: 5}))
+  .is('eyJhIjo1fQ==')
+  .string(toBase64(new Date('2000-01-01T00:00:00.000Z')))
+  .is('IjIwMDAtMDEtMDFUMDA6MDA6MDAuMDAwWiI=');
 ```
 
 <a name="toboolean"></a>

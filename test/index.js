@@ -7,6 +7,7 @@
   const FUNCTIONS = [
     'toArray',
     'toAscii',
+    'toBase64',
     'toBoolean',
     'toCamelCase',
     'toCSV',
