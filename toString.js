@@ -2,11 +2,11 @@
 
 (() => {
   const toString = (value) => {
-    if (value == null) {
-      value = '';
+    try {
+      return value.toString();
+    } catch (err) {
+      return '';
     }
-
-    return value.toString() || `${value}`;
   }; // end toString
 
   // expor toString as commonjs module

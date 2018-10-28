@@ -1249,6 +1249,18 @@ unit
   .function(toString);
 ```
 
+should return a string.
+
+```js
+unit
+  .string(toString([1, 2, 3]))
+  .is('1,2,3')
+  .string(toString({a: 5}))
+  .is('[object Object]')
+  .string(toString(Object.create(null)))
+  .is('');
+```
+
 <a name="totokens"></a>
 # #toTokens
 should be a function.
