@@ -5,6 +5,7 @@
   const unit = require('unit.js');
   const index = require('../index');
   const FUNCTIONS = [
+    'toArray',
     'toAscii',
     'toBoolean',
     'toCamelCase',
