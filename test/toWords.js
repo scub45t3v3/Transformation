@@ -23,7 +23,7 @@
         .array(toWords('a,b,c'))
         .is(['a', 'b', 'c'])
         .array(toWords('fruit: apples, oranges, bananas'))
-        .is(['fruit:', 'apples', 'oranges', 'bananas'])
+        .is(['fruit', 'apples', 'oranges', 'bananas'])
         .array(toWords('one'))
         .is(['one'])
         .array(toWords(''))
