@@ -2,6 +2,7 @@
 
 (() => {
   // include dependencies
+  const debug = require('debug')('@scuba-squad:transformation:toAscii');
   const currencies = require('./util/currencies');
   const diacritics = require('./util/diacritics');
   const symbols = require('./util/symbols');
@@ -9,6 +10,8 @@
   const charMap = Object.assign({}, currencies, diacritics, symbols);
 
   const toAscii = (value) => {
+    debug('call:toAscii(%o)', value);
+
     if (Array.isArray(value)) {
       value = value.join(' ');
     }
