@@ -2,22 +2,22 @@
 
 (() => {
   // include dependencies
-  const _ = require('underscore');
+  const {flatten} = require('underscore');
 
   const toList = (value, opt = {}) => {
-    _.defaults(opt, {
+    opt = Object.assign({
       delimiter: ', ',
       last: ' and ',
-    });
+    }, opt);
 
-    value = _.filter(_.flatten([value]), (v) => {
+    value = flatten([value]).filter((v) => {
       return !(v == null || v === '' || Number.isNaN(v));
     });
 
     const last = value.pop();
 
-    if (!Array.isArray(value) || !value.length) {
-      return `${last}` || '';
+    if (!value.length) {
+      return `${last}`;
     }
 
     return `${value.join(opt.delimiter)}${opt.last}${last}`;
