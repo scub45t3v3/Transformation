@@ -17,6 +17,7 @@
     'toLines',
     'toList',
     'toListSerial',
+    'toMD5',
     'toNumber',
     'toPascalCase',
     'toPlural',

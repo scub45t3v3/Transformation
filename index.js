@@ -17,6 +17,7 @@
   exports.toLines = require('./toLines');
   exports.toList = require('./toList');
   exports.toListSerial = require('./toListSerial');
+  exports.toMD5 = require('./toMD5');
   exports.toPascalCase = require('./toPascalCase');
   exports.toPlural = require('./toPlural');
   exports.toSingular = require('./toSingular');
