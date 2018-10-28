@@ -5,7 +5,7 @@
   const toString = require('./toString');
 
   const toTokens = (value, delimiter = /\s+/) => {
-    return toString(value).split(delimiter) || [];
+    return toString(value).split(delimiter);
   }; // end toTokens
 
   // expor toTokens as commonjs module
