@@ -2,9 +2,11 @@
 
 (() => {
   // include dependencies
+  const debug = require('debug')('@scuba-squad:transformation:toList');
   const {flatten} = require('underscore');
 
   const toList = (value, opt = {}) => {
+    debug('call:toList(%o, %o)', value, opt);
     opt = Object.assign({
       delimiter: ', ',
       last: ' and ',
