@@ -2,9 +2,12 @@
 
 (() => {
   // include dependencies
+  const debug = require('debug')('@scuba-squad:transformation:toPascalCase');
   const toString = require('./toString');
 
   const toPascalCase = (value) => {
+    debug('call:toPascalCase(%o)', value);
+
     return toString(value)
       .trim()
       .replace(/(?:\W|_)+/gm, '_')
