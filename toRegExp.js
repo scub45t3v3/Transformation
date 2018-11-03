@@ -2,10 +2,13 @@
 
 (() => {
   // include dependencies
+  const debug = require('debug')('@scuba-squad:transformation:toRegExp');
   const toString = require('./toString');
   const REGEX = /^([`~!@#$%^&*+=|\\?/])(.+)\1([gimuy]*)$/;
 
   const toRegExp = (value) => {
+    debug('call:toRegExp(%o)', value);
+
     if (value instanceof RegExp) {
       return value;
     }
