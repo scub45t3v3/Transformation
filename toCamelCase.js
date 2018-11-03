@@ -2,9 +2,12 @@
 
 (() => {
   // include dependencies
+  const debug = require('debug')('@scuba-squad:transformation:toCamelCase');
   const toString = require('./toString');
 
   const toCamelCase = (value) => {
+    debug('call:toCamelCase(%o)', value);
+
     return toString(value)
       .trim()
       .replace(/(?:\W|_)+/gm, '_')
