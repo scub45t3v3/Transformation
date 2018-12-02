@@ -313,7 +313,7 @@ unit
   .isTrue();
 ```
 
-should return true to numbers != 0.
+should return true for numbers != 0.
 
 ```js
 unit
@@ -853,7 +853,8 @@ unit
 should be a function.
 
 ```js
-unit.function(toList);
+unit
+  .function(toList);
 ```
 
 should return a string  of value if only 1 value is provided.

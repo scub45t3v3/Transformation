@@ -31,7 +31,7 @@
         .isTrue();
     }); // end it
 
-    it('should return true to numbers != 0', () => {
+    it('should return true for numbers != 0', () => {
       unit
         .bool(toBoolean(1))
         .isTrue()

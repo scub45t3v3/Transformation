@@ -8,7 +8,8 @@
   // describe #toList
   describe('#toList', () => {
     it('should be a function', () => {
-      unit.function(toList);
+      unit
+        .function(toList);
     }); // end it
 
     it('should return a string  of value if only 1 value is provided', () => {
