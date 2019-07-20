@@ -1,7 +1,7 @@
 {
   "name": "@scuba-squad/transformation",
   "description": "Transformation library with several data transformation methods",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "public": true,
   "main": "index.js",
   "license": "MIT",
