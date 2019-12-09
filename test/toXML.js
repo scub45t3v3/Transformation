@@ -5,30 +5,28 @@
  * on xml-js this is only included to test the passthrough is setup as
  * expected
  */
-(() => {
-  // include dependencies
-  const unit = require('unit.js');
-  const toXML = require('../toXML');
+// include dependencies
+const unit = require('unit.js');
+const toXML = require('../toXML');
 
-  // describe #toXML
-  describe('#toXML', () => {
-    it('should be a function', () => {
-      unit
-        .function(toXML);
-    }); // end it
+// describe #toXML
+describe('#toXML', () => {
+  it('should be a function', () => {
+    unit
+      .function(toXML);
+  }); // end it
 
-    it('should return an xml string for an object', () => {
-      const test = {
-        firstName: 'James',
-        lastName: 'Bond',
-        age: 55,
-      };
+  it('should return an xml string for an object', () => {
+    const test = {
+      firstName: 'James',
+      lastName: 'Bond',
+      age: 55,
+    };
 
-      const regex = /^\s*<(firstName)>James<\/\1>\s*<(lastName)>Bond<\/\2>\s*<(age)>55<\/\3>\s*$/m;
+    const regex = /^\s*<(firstName)>James<\/\1>\s*<(lastName)>Bond<\/\2>\s*<(age)>55<\/\3>\s*$/m;
 
-      unit
-        .string(toXML(test))
-        .match(regex);
-    }); // end it
-  }); // end describe #toXML
-})(); // end IIFE
+    unit
+      .string(toXML(test))
+      .match(regex);
+  }); // end it
+}); // end describe #toXML
