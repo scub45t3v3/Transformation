@@ -1,16 +1,14 @@
 'use strict';
 
-(() => {
-  // include dependencies
-  const debug = require('debug')('@scuba-squad:transformation:toSingular');
-  const {singular} = require('pluralize');
+// include dependencies
+const debug = require('debug')('@scuba-squad:transformation:toSingular');
+const {singular} = require('pluralize');
 
-  const toSingular = (value) => {
-    debug('call:toSingular(%o)', value);
+const toSingular = (value) => {
+  debug('call:toSingular(%o)', value);
 
-    return singular(value);
-  }; // end toSingular
+  return singular(value);
+}; // end toSingular
 
-  // export toSingular as commonjs module
-  module.exports = toSingular;
-})(); // end IIFE
+// export as commonjs module
+module.exports = toSingular;
