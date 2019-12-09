@@ -1,26 +1,24 @@
 'use strict';
 
-(() => {
-  // include dependencies
-  const debug = require('debug')('@scuba-squad:transformation:toCamelCase');
-  const toString = require('./toString');
+// include dependencies
+const debug = require('debug')('@scuba-squad:transformation:toCamelCase');
+const toString = require('./toString');
 
-  const toCamelCase = (value) => {
-    debug('call:toCamelCase(%o)', value);
+const toCamelCase = (value) => {
+  debug('call:toCamelCase(%o)', value);
 
-    return toString(value)
-      .trim()
-      .replace(/(?:\W|_)+/gm, '_')
-      .replace(/^_+/, '')
-      .replace(/_+$/, '')
-      .replace(/_(.)/gm, (match, char) => {
-        return char && char.toUpperCase();
-      })
-      .replace(/^[A-Z]/, (match) => {
-        return match && match.toLowerCase();
-      });
-  }; // end toCamelCase
+  return toString(value)
+    .trim()
+    .replace(/(?:\W|_)+/gm, '_')
+    .replace(/^_+/, '')
+    .replace(/_+$/, '')
+    .replace(/_(.)/gm, (match, char) => {
+      return char && char.toUpperCase();
+    })
+    .replace(/^[A-Z]/, (match) => {
+      return match && match.toLowerCase();
+    });
+}; // end toCamelCase
 
-  // export toCamelCase as commonjs module
-  module.exports = toCamelCase;
-})(); // end IIFE
+// export as commonjs module
+module.exports = toCamelCase;
