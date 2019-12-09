@@ -1,15 +1,13 @@
 'use strict';
 
-(() => {
-  // include dependencies
-  const debug = require('debug')('@scuba-squad:transformation:toNumber');
+// include dependencies
+const debug = require('debug')('@scuba-squad:transformation:toNumber');
 
-  const toNumber = (value) => {
-    debug('call:toNumber(%o)', value);
+const toNumber = (value) => {
+  debug('call:toNumber(%o)', value);
 
-    return Number(value);
-  }; // end toNumber
+  return Number(value);
+}; // end toNumber
 
-  // export toNumber as commonjs module
-  module.exports = toNumber;
-})(); // end IIFE
+// export as commonjs module
+module.exports = toNumber;
