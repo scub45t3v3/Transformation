@@ -1,23 +1,21 @@
 'use strict';
 
-(() => {
-  // include dependencies
-  const debug = require('debug')('@scuba-squad:transformation:toMD5');
-  const crypto = require('crypto');
+// include dependencies
+const debug = require('debug')('@scuba-squad:transformation:toMD5');
+const crypto = require('crypto');
 
-  const toMD5 = (value) => {
-    debug('call:toMD5(%o)', value);
+const toMD5 = (value) => {
+  debug('call:toMD5(%o)', value);
 
-    if (!(value instanceof String || typeof value === 'string')) {
-      value = JSON.stringify(value);
-    }
+  if (!(value instanceof String || typeof value === 'string')) {
+    value = JSON.stringify(value);
+  }
 
-    return crypto
-      .createHash('md5')
-      .update(value)
-      .digest('hex');
-  };
+  return crypto
+    .createHash('md5')
+    .update(value)
+    .digest('hex');
+};
 
-  // export toMD5 as commonjs module
-  module.exports = toMD5;
-})(); // end IIFE
+// export as commonjs module
+module.exports = toMD5;
