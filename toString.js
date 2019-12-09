@@ -1,19 +1,17 @@
 'use strict';
 
-(() => {
-  // include dependencies
-  const debug = require('debug')('@scuba-squad:transformation:toString');
+// include dependencies
+const debug = require('debug')('@scuba-squad:transformation:toString');
 
-  const toString = (value) => {
-    debug('call:toString(%o)', value);
+const toString = (value) => {
+  debug('call:toString(%o)', value);
 
-    try {
-      return value.toString();
-    } catch (err) {
-      return '';
-    }
-  }; // end toString
+  try {
+    return value.toString();
+  } catch (err) {
+    return '';
+  }
+}; // end toString
 
-  // expor toString as commonjs module
-  module.exports = toString;
-})(); // end IIFE
+// export as commonjs module
+module.exports = toString;
