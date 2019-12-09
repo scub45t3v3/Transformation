@@ -1,20 +1,18 @@
 'use strict';
 
-(() => {
-  // include dependencies
-  const debug = require('debug')('@scuba-squad:transformation:toKebabCase');
-  const toString = require('./toString');
+// include dependencies
+const debug = require('debug')('@scuba-squad:transformation:toKebabCase');
+const toString = require('./toString');
 
-  const toKebabCase = (value) => {
-    debug('call:toKebabCase(%o)', value);
+const toKebabCase = (value) => {
+  debug('call:toKebabCase(%o)', value);
 
-    return toString(value)
-      .trim()
-      .replace(/(?:\W|_)+/gm, '-')
-      .replace(/([a-z])([A-Z])/gm, '$1-$2')
-      .toLowerCase();
-  };
+  return toString(value)
+    .trim()
+    .replace(/(?:\W|_)+/gm, '-')
+    .replace(/([a-z])([A-Z])/gm, '$1-$2')
+    .toLowerCase();
+};
 
-  // export toKebabCase as commonjs module
-  module.exports = toKebabCase;
-})(); // end IIFE
+// export as commonjs module
+module.exports = toKebabCase;
