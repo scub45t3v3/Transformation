@@ -1,20 +1,18 @@
 'use strict';
 
-(() => {
-  // include dependencies
-  const debug = require('debug')('@scuba-squad:transformation:toSnakeCase');
-  const toString = require('./toString');
+// include dependencies
+const debug = require('debug')('@scuba-squad:transformation:toSnakeCase');
+const toString = require('./toString');
 
-  const toSnakeCase = (value) => {
-    debug('call:toSnakeCase(%o)', value);
+const toSnakeCase = (value) => {
+  debug('call:toSnakeCase(%o)', value);
 
-    return toString(value)
-      .trim()
-      .replace(/(?:\W|_)+/gm, '_')
-      .replace(/([a-z])([A-Z])/gm, '$1_$2')
-      .toLowerCase();
-  }; // end toSnakeCase
+  return toString(value)
+    .trim()
+    .replace(/(?:\W|_)+/gm, '_')
+    .replace(/([a-z])([A-Z])/gm, '$1_$2')
+    .toLowerCase();
+}; // end toSnakeCase
 
-  // export toSnakeCase as commonjs module
-  module.exports = toSnakeCase;
-})(); // end IIFE
+// export as commonjs module
+module.exports = toSnakeCase;
