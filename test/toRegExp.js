@@ -14,7 +14,7 @@ describe('#toRegExp', () => {
     unit
       .regexp(toRegExp(/asd/i))
       .is(/asd/i)
-      .regexp(toRegExp(new RegExp('^hello', 'i')))
+      .regexp(toRegExp(new RegExp('^hello', 'i'))) // eslint-disable-line prefer-regex-literals
       .is(/^hello/i)
       .regexp(toRegExp(/^\d+$/))
       .is(/^\d+$/);
