@@ -10,7 +10,7 @@ const toSnakeCase = (value) => {
   return toString(value)
     .trim()
     .replace(/(?:\W|_)+/gm, '_')
-    .replace(/([a-z])([A-Z])/gm, '$1_$2')
+    .replace(/(?<lower>[a-z])(?<upper>[A-Z])/gm, '$1_$2')
     .toLowerCase();
 }; // end toSnakeCase
 

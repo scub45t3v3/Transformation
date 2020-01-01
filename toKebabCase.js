@@ -10,7 +10,7 @@ const toKebabCase = (value) => {
   return toString(value)
     .trim()
     .replace(/(?:\W|_)+/gm, '-')
-    .replace(/([a-z])([A-Z])/gm, '$1-$2')
+    .replace(/(?<lower>[a-z])(?<upper>[A-Z])/gm, '$1-$2')
     .toLowerCase();
 };
 

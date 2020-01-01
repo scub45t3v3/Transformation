@@ -24,7 +24,7 @@ const toSlug = (value) => {
     .trim()
     .replace(/[\s_-]+/g, '-')
     .replace(/^-+|-+$/g, '')
-    .replace(/([a-z])([A-Z])/gm, '$1-$2')
+    .replace(/(?<lower>[a-z])(?<upper>[A-Z])/gm, '$1-$2')
     .replace(/[^\w.\-~!$&'()*+,;=':@%]+/, '');
 };
 

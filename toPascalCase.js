@@ -12,7 +12,7 @@ const toPascalCase = (value) => {
     .replace(/(?:\W|_)+/gm, '_')
     .replace(/^_+/, '')
     .replace(/_+$/, '')
-    .replace(/_(.)/gm, (match, char) => {
+    .replace(/_(?<char>.)/gm, (match, char) => {
       return char && char.toUpperCase();
     })
     .replace(/^[a-z]/, (match) => {

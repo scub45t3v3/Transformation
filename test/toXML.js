@@ -23,6 +23,7 @@ describe('#toXML', () => {
       age: 55,
     };
 
+    // eslint-disable-next-line prefer-named-capture-group
     const regex = /^\s*<(firstName)>James<\/\1>\s*<(lastName)>Bond<\/\2>\s*<(age)>55<\/\3>\s*$/m;
 
     unit
