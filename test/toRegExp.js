@@ -12,22 +12,22 @@ describe('#toRegExp', () => {
 
   it('should return a RegExp when given a RegExp object', () => {
     unit
-      .regexp(toRegExp(/asd/i))
-      .is(/asd/i)
-      .regexp(toRegExp(new RegExp('^hello', 'i'))) // eslint-disable-line prefer-regex-literals
-      .is(/^hello/i)
-      .regexp(toRegExp(/^\d+$/))
-      .is(/^\d+$/);
+      .regexp(toRegExp(/asd/iu))
+      .is(/asd/iu)
+      .regexp(toRegExp(new RegExp('^hello', 'iu'))) // eslint-disable-line prefer-regex-literals
+      .is(/^hello/iu)
+      .regexp(toRegExp(/^\d+$/u))
+      .is(/^\d+$/u);
   }); // end it
 
   it('should return a RegExp object when given a serialized pcre string', () => {
     unit
-      .regexp(toRegExp('/asd/i'))
-      .is(/asd/i)
-      .regexp(toRegExp('%^hello%i'))
-      .is(/^hello/i)
-      .regexp(toRegExp('|\\d+|g'))
-      .is(/\d+/g);
+      .regexp(toRegExp('/asd/iu'))
+      .is(/asd/iu)
+      .regexp(toRegExp('%^hello%iu'))
+      .is(/^hello/iu)
+      .regexp(toRegExp('|\\d+|gu'))
+      .is(/\d+/gu);
   }); // end it
 
   it('should throw an error when given a non-serilized pcre string', () => {

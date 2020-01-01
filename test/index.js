@@ -39,7 +39,7 @@ describe('@scuba-squad/transformation', () => {
       .object(index)
       .hasProperties(FUNCTIONS)
       .matchEach((value, key) => {
-        return typeof value === 'function' && /^to[A-Z]/.test(key);
+        return typeof value === 'function' && /^to[A-Z]/u.test(key);
       });
   }); // end it
 }); // end describe @scuba-squad/transformation

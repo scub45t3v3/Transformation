@@ -9,13 +9,13 @@ const toPascalCase = (value) => {
 
   return toString(value)
     .trim()
-    .replace(/(?:\W|_)+/gm, '_')
-    .replace(/^_+/, '')
-    .replace(/_+$/, '')
-    .replace(/_(?<char>.)/gm, (match, char) => {
+    .replace(/(?:\W|_)+/gmu, '_')
+    .replace(/^_+/u, '')
+    .replace(/_+$/u, '')
+    .replace(/_(?<char>.)/gmu, (match, char) => {
       return char && char.toUpperCase();
     })
-    .replace(/^[a-z]/, (match) => {
+    .replace(/^[a-z]/u, (match) => {
       return match && match.toUpperCase();
     });
 }; // end toPascalCase

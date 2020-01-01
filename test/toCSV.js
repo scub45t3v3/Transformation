@@ -21,7 +21,7 @@ describe('#toCSV', () => {
       age: 55,
     };
 
-    const regex = /^\s*"firstName"\s*,\s*"lastName"\s*,\s*"age"\s*"James"\s*,\s*"Bond"\s*,\s*55\s*$/m;
+    const regex = /^\s*"firstName"\s*,\s*"lastName"\s*,\s*"age"\s*"James"\s*,\s*"Bond"\s*,\s*55\s*$/mu;
 
     unit
       .string(toCSV(test))

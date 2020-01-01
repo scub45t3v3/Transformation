@@ -76,7 +76,7 @@ describe('#toBoolean', () => {
       .isTrue()
       .bool(toBoolean(new Array(1, 2)))
       .isTrue()
-      .bool(toBoolean(new RegExp()))
+      .bool(toBoolean(new RegExp())) // eslint-disable-line require-unicode-regexp
       .isTrue();
   }); // end it
 

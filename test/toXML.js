@@ -24,7 +24,7 @@ describe('#toXML', () => {
     };
 
     // eslint-disable-next-line prefer-named-capture-group
-    const regex = /^\s*<(firstName)>James<\/\1>\s*<(lastName)>Bond<\/\2>\s*<(age)>55<\/\3>\s*$/m;
+    const regex = /^\s*<(firstName)>James<\/\1>\s*<(lastName)>Bond<\/\2>\s*<(age)>55<\/\3>\s*$/mu;
 
     unit
       .string(toXML(test))

@@ -7,7 +7,7 @@ const toTokens = require('./toTokens');
 const toWords = (value) => {
   debug('call:toWords(%o)', value);
 
-  return toTokens(value, /[!?.:;]*[\s,]+/);
+  return toTokens(value, /[!?.:;]*[\s,]+/u);
 }; // end toWords
 
 // export as commonjs module

@@ -11,7 +11,7 @@ const toListSerial = (value, opt = {}) => {
     last: ' and ',
   }, opt);
 
-  opt.last = `${opt.delimiter}${opt.last}`.replace(/\s+/, ' ');
+  opt.last = `${opt.delimiter}${opt.last}`.replace(/\s+/u, ' ');
 
   return toList(value, opt);
 }; // end toListSerial

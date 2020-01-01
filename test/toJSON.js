@@ -22,7 +22,7 @@ describe('#toJSON', () => {
       age: 55,
     };
 
-    const regex = /^\s*{\s*"firstName"\s*:\s*"James"\s*,\s*"lastName"\s*:\s*"Bond"\s*,\s*"age"\s*:\s*55\s*}\s*$/m;
+    const regex = /^\s*\{\s*"firstName"\s*:\s*"James"\s*,\s*"lastName"\s*:\s*"Bond"\s*,\s*"age"\s*:\s*55\s*\}\s*$/mu;
 
     unit
       .string(toJSON(test))

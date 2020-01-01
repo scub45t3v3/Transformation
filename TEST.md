@@ -37,7 +37,7 @@ unit
   .object(index)
   .hasProperties(FUNCTIONS)
   .matchEach((value, key) => {
-    return typeof value === 'function' && /^to[A-Z]/.test(key);
+    return typeof value === 'function' && /^to[A-Z]/u.test(key);
   });
 ```
 
@@ -367,7 +367,7 @@ unit
   .isTrue()
   .bool(toBoolean(new Array(1, 2)))
   .isTrue()
-  .bool(toBoolean(new RegExp()))
+  .bool(toBoolean(new RegExp())) // eslint-disable-line require-unicode-regexp
   .isTrue();
 ```
 
@@ -480,7 +480,7 @@ const test = {
   lastName: 'Bond',
   age: 55,
 };
-const regex = /^\s*"firstName"\s*,\s*"lastName"\s*,\s*"age"\s*"James"\s*,\s*"Bond"\s*,\s*55\s*$/m;
+const regex = /^\s*"firstName"\s*,\s*"lastName"\s*,\s*"age"\s*"James"\s*,\s*"Bond"\s*,\s*55\s*$/mu;
 unit
   .string(toCSV(test))
   .match(regex);
@@ -635,7 +635,7 @@ unit
   .string(toFormat('$> %j', {
     a: 5,
   }))
-  .match(/^\$>\s*{\s*"a"\s*:\s*5\s*}\s*$/);
+  .match(/^\$>\s*\{\s*"a"\s*:\s*5\s*\}\s*$/u);
 ```
 
 <a name="tojson"></a>
@@ -655,7 +655,7 @@ const test = {
   lastName: 'Bond',
   age: 55,
 };
-const regex = /^\s*{\s*"firstName"\s*:\s*"James"\s*,\s*"lastName"\s*:\s*"Bond"\s*,\s*"age"\s*:\s*55\s*}\s*$/m;
+const regex = /^\s*\{\s*"firstName"\s*:\s*"James"\s*,\s*"lastName"\s*:\s*"Bond"\s*,\s*"age"\s*:\s*55\s*\}\s*$/mu;
 unit
   .string(toJSON(test))
   .match(regex);
@@ -1284,24 +1284,24 @@ should return a RegExp when given a RegExp object.
 
 ```js
 unit
-  .regexp(toRegExp(/asd/i))
-  .is(/asd/i)
-  .regexp(toRegExp(new RegExp('^hello', 'i'))) // eslint-disable-line prefer-regex-literals
-  .is(/^hello/i)
-  .regexp(toRegExp(/^\d+$/))
-  .is(/^\d+$/);
+  .regexp(toRegExp(/asd/iu))
+  .is(/asd/iu)
+  .regexp(toRegExp(new RegExp('^hello', 'iu'))) // eslint-disable-line prefer-regex-literals
+  .is(/^hello/iu)
+  .regexp(toRegExp(/^\d+$/u))
+  .is(/^\d+$/u);
 ```
 
 should return a RegExp object when given a serialized pcre string.
 
 ```js
 unit
-  .regexp(toRegExp('/asd/i'))
-  .is(/asd/i)
-  .regexp(toRegExp('%^hello%i'))
-  .is(/^hello/i)
-  .regexp(toRegExp('|\\d+|g'))
-  .is(/\d+/g);
+  .regexp(toRegExp('/asd/iu'))
+  .is(/asd/iu)
+  .regexp(toRegExp('%^hello%iu'))
+  .is(/^hello/iu)
+  .regexp(toRegExp('|\\d+|gu'))
+  .is(/\d+/gu);
 ```
 
 should throw an error when given a non-serilized pcre string.
@@ -1555,7 +1555,7 @@ unit
 should return an array of strings split on the provided token.
 
 ```js
-const token = /\W+/;
+const token = /\W+/u;
 unit
   .array(toTokens('hello world!', token))
   .is(['hello', 'world', ''])
@@ -1617,8 +1617,8 @@ should return a string of value when no options are provided.
 unit
   .string(toWrap('hello'))
   .is('hello')
-  .string(toWrap(/asd/i))
-  .is('/asd/i')
+  .string(toWrap(/asd/iu))
+  .is('/asd/iu')
   .string(toWrap(Symbol('no')))
   .is('Symbol(no)');
 ```
@@ -1694,7 +1694,7 @@ const test = {
   age: 55,
 };
 // eslint-disable-next-line prefer-named-capture-group
-const regex = /^\s*<(firstName)>James<\/\1>\s*<(lastName)>Bond<\/\2>\s*<(age)>55<\/\3>\s*$/m;
+const regex = /^\s*<(firstName)>James<\/\1>\s*<(lastName)>Bond<\/\2>\s*<(age)>55<\/\3>\s*$/mu;
 unit
   .string(toXML(test))
   .match(regex);
@@ -1717,7 +1717,7 @@ const test = {
   lastName: 'Bond',
   age: 55,
 };
-const regex = /^\s*firstName\s*:\s*James\s*\s*lastName\s*:\s*Bond\s*\s*age\s*:\s*55\s*$/m;
+const regex = /^\s*firstName\s*:\s*James\s*\s*lastName\s*:\s*Bond\s*\s*age\s*:\s*55\s*$/mu;
 unit
   .string(toYAML(test))
   .match(regex);

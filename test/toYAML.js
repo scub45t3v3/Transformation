@@ -24,7 +24,7 @@
         age: 55,
       };
 
-      const regex = /^\s*firstName\s*:\s*James\s*\s*lastName\s*:\s*Bond\s*\s*age\s*:\s*55\s*$/m;
+      const regex = /^\s*firstName\s*:\s*James\s*\s*lastName\s*:\s*Bond\s*\s*age\s*:\s*55\s*$/mu;
 
       unit
         .string(toYAML(test))

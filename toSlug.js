@@ -22,10 +22,10 @@ const toSlug = (value) => {
     })
     .join('')
     .trim()
-    .replace(/[\s_-]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .replace(/(?<lower>[a-z])(?<upper>[A-Z])/gm, '$1-$2')
-    .replace(/[^\w.\-~!$&'()*+,;=':@%]+/, '');
+    .replace(/[\s_-]+/gu, '-')
+    .replace(/^-+|-+$/gu, '')
+    .replace(/(?<lower>[a-z])(?<upper>[A-Z])/gmu, '$1-$2')
+    .replace(/[^\w.\-~!$&'()*+,;=':@%]+/u, '');
 };
 
 // export as commonjs module

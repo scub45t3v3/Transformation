@@ -24,6 +24,6 @@ describe('#toFormat', () => {
       .string(toFormat('$> %j', {
         a: 5,
       }))
-      .match(/^\$>\s*{\s*"a"\s*:\s*5\s*}\s*$/);
+      .match(/^\$>\s*\{\s*"a"\s*:\s*5\s*\}\s*$/u);
   }); // end it
 }); // end describe #toFormat

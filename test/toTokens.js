@@ -30,7 +30,7 @@ describe('#toTokens', () => {
   }); // end it
 
   it('should return an array of strings split on the provided token', () => {
-    const token = /\W+/;
+    const token = /\W+/u;
 
     unit
       .array(toTokens('hello world!', token))

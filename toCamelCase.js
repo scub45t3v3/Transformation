@@ -9,13 +9,13 @@ const toCamelCase = (value) => {
 
   return toString(value)
     .trim()
-    .replace(/(?:\W|_)+/gm, '_')
-    .replace(/^_+/, '')
-    .replace(/_+$/, '')
-    .replace(/_(?<char>.)/gm, (match, char) => {
+    .replace(/(?:\W|_)+/gmu, '_')
+    .replace(/^_+/u, '')
+    .replace(/_+$/u, '')
+    .replace(/_(?<char>.)/gmu, (match, char) => {
       return char && char.toUpperCase();
     })
-    .replace(/^[A-Z]/, (match) => {
+    .replace(/^[A-Z]/u, (match) => {
       return match && match.toLowerCase();
     });
 }; // end toCamelCase

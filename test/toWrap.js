@@ -15,8 +15,8 @@ describe('#toWrap', () => {
     unit
       .string(toWrap('hello'))
       .is('hello')
-      .string(toWrap(/asd/i))
-      .is('/asd/i')
+      .string(toWrap(/asd/iu))
+      .is('/asd/iu')
       .string(toWrap(Symbol('no')))
       .is('Symbol(no)');
   }); // end it

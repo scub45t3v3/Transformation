@@ -3,7 +3,7 @@
 // include dependencies
 const debug = require('debug')('@scuba-squad:transformation:toRegExp');
 const toString = require('./toString');
-const REGEX = /^(?<seperator>[`~!@#$%^&*+=|\\?/])(?<pattern>.+)\1(?<flags>[gimuy]*)$/;
+const REGEX = /^(?<seperator>[`~!@#$%^&*+=|\\?/])(?<pattern>.+)\1(?<flags>[gimuy]*)$/u;
 
 const toRegExp = (value) => {
   debug('call:toRegExp(%o)', value);
