@@ -1,7 +1,7 @@
 # Transformation
 
 <a name="status"></a>
-[![Build Status](https://travis-ci.org/scub45t3v3/Transformation.svg?branch=master)](https://travis-ci.org/scub45t3v3/Transformation)
+[![Build Status](https://github.com/scub45t3v3/transformation/workflows/CI/badge.svg?event=push)](https://github.com/scub45t3v3/transformation/actions)
 [![Coverage Status](https://coveralls.io/repos/github/scub45t3v3/Transformation/badge.svg)](https://coveralls.io/github/scub45t3v3/Transformation)
 
 <a name="toc"></a>
